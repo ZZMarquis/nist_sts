@@ -8,6 +8,16 @@
 #include "defs.h"
 
 /**
+ *
+ * @param in
+ * @param inl
+ * @param out 外部预先分配缓冲区，缓冲区大小因最少为字节数的8倍
+ * @param outbufsize
+ * @return
+ */
+int BytesToBitSequence(unsigned char *in, int inl, BitSequence *outbuf, int bufsize);
+
+/**
  * 单比特频数检测
  * @param n
  * @return

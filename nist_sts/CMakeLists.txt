@@ -1,7 +1,6 @@
-file(GLOB HTTPCLIENT_SRC *.c *.h include/*.h)
+file(GLOB SRC_LIST *.c *.h include/*.h)
 
-add_library(nist_sts STATIC ${HTTPCLIENT_SRC})
+set(DEPENDS m)
 
-set_target_properties(nist_sts PROPERTIES FOLDER "Public")
-
-add_subdirectory(test)
+add_library(nist_sts STATIC ${SRC_LIST})
+target_link_libraries(nist_sts ${DEPENDS})

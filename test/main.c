@@ -3,45 +3,20 @@
 #include <stdlib.h>
 #include <time.h>
 #include <memory.h>
-#include "prng.h"
+#include <openssl/rand.h>
 
 #include "stat_fncs.h"
 
 #define RAND_LEN      (125000)
 #define RAND_BIT_LEN  (RAND_LEN * 8)
 
-unsigned char compute(unsigned char b, unsigned char factor)
+void gen_rand(BitSequence *rand_bits, int rand_bits_len)
 {
-    if ((factor & b) == factor) {
-        return 0x01;
-    } else {
-        return 0x00;
-    }
-}
-
-void gen_rand(BitSequence *rand_bits)
-{
-    BitSequence *tmp = (BitSequence *)calloc(RAND_BIT_LEN, sizeof(BitSequence));
-    unsigned char rand[RAND_LEN] = {0};
-    time_t tt = {0};
-    int i = 0, j = 0;
-    PRNG_CTX ctx = {0};
-    PRNG_init(&ctx);
-    tt = time(NULL);
-    PRNG_seed(&ctx, (unsigned char *) &tt, sizeof(tt));
-    PRNG_rand(&ctx, rand, sizeof(rand));
-    for (i = 0; i < sizeof(rand); ++i) {
-        j = i * 8;
-        tmp[j] = (BitSequence) (compute(rand[i], 0x80));
-        tmp[j + 1] = (BitSequence) (compute(rand[i], 0x40));
-        tmp[j + 2] = (BitSequence) (compute(rand[i], 0x20));
-        tmp[j + 3] = (BitSequence) (compute(rand[i], 0x10));
-        tmp[j + 4] = (BitSequence) (compute(rand[i], 0x08));
-        tmp[j + 5] = (BitSequence) (compute(rand[i], 0x04));
-        tmp[j + 6] = (BitSequence) (compute(rand[i], 0x02));
-        tmp[j + 7] = (BitSequence) (compute(rand[i], 0x01));
-    }
-    memcpy(rand_bits, tmp, RAND_BIT_LEN);
+    int count = rand_bits_len / 8;
+    unsigned char *rand_bytes = (unsigned char *)calloc(count, 1);
+    RAND_bytes(rand_bytes, count);
+    BytesToBitSequence(rand_bytes, count, rand_bits, rand_bits_len);
+    free(rand_bytes);
 }
 
 int main(int argc, char **argv)
@@ -49,9 +24,8 @@ int main(int argc, char **argv)
     int ret = 0;
     BitSequence *rand_bits = (BitSequence *)calloc(RAND_BIT_LEN, sizeof(BitSequence));
     clock_t begin = 0, end = 0;
-	unsigned char n = 255;
 
-    gen_rand(rand_bits);
+    gen_rand(rand_bits, RAND_BIT_LEN);
 
     //1
     begin = clock();
@@ -218,6 +192,8 @@ int main(int argc, char **argv)
         printf("DiscreteFourierTransform pass\n");
     }
 
-	getchar();
+    printf("all over!\n");
+
+    free(rand_bits);
     return 0;
 }
