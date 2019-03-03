@@ -57,7 +57,7 @@ RandomExcursionsVariant(int n, BitSequence *epsilon)
 			for ( i=0; i<n; i++ )
 				if ( S_k[i] == x )
 					count++;
-			p_value = erfc(fabs(count-J)/(sqrt(2.0*J*(4.0*fabs(x)-2))));
+			p_value = nist_erfc(fabs(count-J)/(sqrt(2.0*J*(4.0*fabs(x)-2))));
 
 			if ( isNegative(p_value) || isGreaterThanOne(p_value) ) {
 //                fprintf(stats[TEST_RND_EXCURSION_VAR], "\t\t(b) WARNING: P_VALUE IS OUT OF RANGE.\n");

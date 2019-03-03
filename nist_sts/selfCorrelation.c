@@ -15,7 +15,7 @@ int SelfCorrelation(int d, int n, BitSequence *epsilon)
 
     V = 2 * ((double)Ad - ((double)n_d / 2)) / sqrt(n_d);
 
-    p_value = erfc(fabs(V) / sqrt2);
+    p_value = nist_erfc(fabs(V) / sqrt2);
 
     if (p_value < ALPHA) {
         return 0;

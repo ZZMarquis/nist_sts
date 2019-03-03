@@ -49,7 +49,7 @@ DiscreteFourierTransform(int n, BitSequence *epsilon)
 	N_l = (double) count;       /* number of peaks less than h = sqrt(3*n) */
 	N_o = (double) 0.95*n/2.0;
 	d = (N_l - N_o)/sqrt(n/4.0*0.95*0.05);
-	p_value = erfc(fabs(d)/sqrt(2.0));
+	p_value = nist_erfc(fabs(d)/sqrt(2.0));
 
 //	fprintf(stats[TEST_FFT], "\t\t\t\tFFT TEST\n");
 //	fprintf(stats[TEST_FFT], "\t\t-------------------------------------------\n");

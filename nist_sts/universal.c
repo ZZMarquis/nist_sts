@@ -92,7 +92,7 @@ Universal(int n, BitSequence *epsilon)
 //	fprintf(stats[TEST_UNIVERSAL], "\t\t-----------------------------------------\n");
 
 	arg = fabs(phi-expected_value[L])/(sqrt2 * sigma);
-	p_value = erfc(arg);
+	p_value = nist_erfc(arg);
 	if ( isNegative(p_value) || isGreaterThanOne(p_value) ) {
 //        fprintf(stats[TEST_UNIVERSAL], "\t\tWARNING:  P_VALUE IS OUT OF RANGE\n");
         goto end;

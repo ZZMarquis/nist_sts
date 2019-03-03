@@ -35,7 +35,7 @@ Runs(int n, BitSequence *epsilon)
 				V++;
 	
 		erfc_arg = fabs(V - 2.0 * n * pi * (1-pi)) / (2.0 * pi * (1-pi) * sqrt(2*n));
-		p_value = erfc(erfc_arg);
+		p_value = nist_erfc(erfc_arg);
 		
 //		fprintf(stats[TEST_RUNS], "\t\t\t\tRUNS TEST\n");
 //		fprintf(stats[TEST_RUNS], "\t\t------------------------------------------\n");

@@ -6,7 +6,7 @@
 #include "include/erf.h"
 #include <math.h>
 
-double erf(double x) {
+double nist_erf(double x) {
 	// constants
 	double t, y;
 	double a1 =  0.254829592;
@@ -27,7 +27,7 @@ double erf(double x) {
 	return sign*y; 
 }
 
-double erfc(double x)
+double nist_erfc(double x)
 {
 	double t, z, ans, result;
 	z = fabs(x);

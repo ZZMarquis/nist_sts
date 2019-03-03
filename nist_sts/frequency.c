@@ -19,7 +19,7 @@ Frequency(int n, BitSequence *epsilon)
 		sum += 2*(int)epsilon[i]-1;
 	s_obs = fabs(sum)/sqrt(n);
 	f = s_obs/sqrt2;
-	p_value = erfc(f);
+	p_value = nist_erfc(f);
 
 //	fprintf(stats[TEST_FREQUENCY], "\t\t\t      FREQUENCY TEST\n");
 //	fprintf(stats[TEST_FREQUENCY], "\t\t---------------------------------------------\n");

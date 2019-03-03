@@ -21,7 +21,7 @@ int BinaryDerivate(int k, int n, BitSequence *epsilon, int epsilon_l)
 
     V = fabs(Sn_k) / sqrt(n_k);
 
-    p_value = erfc(fabs(V) / sqrt2);
+    p_value = nist_erfc(fabs(V) / sqrt2);
 
     if (p_value < ALPHA) {
         return 0;

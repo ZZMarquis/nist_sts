@@ -319,11 +319,11 @@ cephes_normal(double x)
 
 	if (x > 0) {
 		arg = x/sqrt2;
-		result = 0.5 * ( 1 + erf(arg) );
+		result = 0.5 * ( 1 + nist_erf(arg) );
 	}
 	else {
 		arg = -x/sqrt2;
-		result = 0.5 * ( 1 - erf(arg) );
+		result = 0.5 * ( 1 - nist_erf(arg) );
 	}
 
 	return( result);
