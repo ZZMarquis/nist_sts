@@ -8,7 +8,7 @@ set(TESTT_DEPENDS nist_sts)
 if (WIN32)
 	set(TESTT_DEPENDS ${TESTT_DEPENDS} libeay32)
 elseif (UNIX)
-	set(TESTT_DEPENDS ${TESTT_DEPENDS} libcrypto)
+	set(TESTT_DEPENDS ${TESTT_DEPENDS} crypto)
 endif ()
 
 file(GLOB TEST_SRC_LIST main.c)
