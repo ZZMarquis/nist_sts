@@ -17,7 +17,10 @@ After unpacking the ZIP place _assess.exe_ in the top directory. The program exp
 STS has somewhat old school terminal interface. Simple tutorial can be found in section 5-1 of [NIST SP800-22](http://csrc.nist.gov/groups/ST/toolkit/rng/documents/SP800-22rev1a.pdf).
 
 Remember that testing results are written to _experiments\AlgorithmTesting\finalAnalysisReport.txt_ if you load tested data from a file. STS has a number of built-in generators, in which case the report will be written to a corresponding subdirectory of _experiments_.
-
+  
+  
+  
+PS:the directories:data/experiments/templates are from https://download.csdn.net/download/yuanhunhai/8985409
 
 
 
