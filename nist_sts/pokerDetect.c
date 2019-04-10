@@ -63,7 +63,7 @@ int PokerDetect(int M, int n, BitSequence *epsilon)
     for (i = 0; i < maxElements; ++i) {
         sum_ni += pow(tab[i].count, 2);
     }
-    mp = maxElements / N;
+    mp = (double)maxElements / N;
     V = mp * sum_ni - N;
 
     p_value = cephes_igamc((double)(maxElements - 1) / 2, V / 2);
