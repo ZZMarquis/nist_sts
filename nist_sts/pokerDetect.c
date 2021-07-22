@@ -42,7 +42,7 @@ int PokerDetect(int M, int n, BitSequence *epsilon)
         return 0;
     }
 
-    tab = (PokerNi *)calloc(sizeof(PokerNi), maxElements);
+    tab = (PokerNi *)calloc(maxElements, sizeof(PokerNi));
     if (NULL == tab) {
         return 0;
     }

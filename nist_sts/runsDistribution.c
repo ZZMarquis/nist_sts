@@ -12,15 +12,15 @@ int RunsDistribution(int n, BitSequence *epsilon)
     double *bi = NULL, *gi = NULL, *e = NULL;
     double bit = 0.0, git = 0.0, et = 0.0;
 
-    bi = (double *)calloc(sizeof(double), n);
+    bi = (double *)calloc(n, sizeof(double));
     if (NULL == bi) {
         goto end;
     }
-    gi = (double *)calloc(sizeof(double), n);
+    gi = (double *)calloc(n, sizeof(double));
     if (NULL == gi) {
         goto end;
     }
-    e = (double *)calloc(sizeof(double), n);
+    e = (double *)calloc(n, sizeof(double));
     if (NULL == e) {
         goto end;
     }
