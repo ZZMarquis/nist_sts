@@ -1,6 +1,7 @@
 #ifndef _NIST_DECLS_H_
 #define _NIST_DECLS_H_
 
+#include <stdio.h>
 #include "defs.h"
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
