@@ -3,7 +3,6 @@
 #include <math.h>
 #include <string.h>
 #include "include/externs.h"
-#include "include/utilities.h"
 #include "include/cephes.h"
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -33,8 +32,6 @@ NonOverlappingTemplateMatchings(int m, int n, BitSequence *epsilon)
 	M = n/N;
 
 	if ( (Wj = (unsigned int*)calloc(N, sizeof(unsigned int))) == NULL ) {
-//		fprintf(stats[TEST_NONPERIODIC], "\tNONOVERLAPPING TEMPLATES TESTS ABORTED DUE TO ONE OF THE FOLLOWING : \n");
-//		fprintf(stats[TEST_NONPERIODIC], "\tInsufficient memory for required work space.\n");
 		return 0;
 	}
 	lambda = (M-m+1)/pow(2, m);
@@ -44,23 +41,9 @@ NonOverlappingTemplateMatchings(int m, int n, BitSequence *epsilon)
 	if ( ((isNegative(lambda)) || (isZero(lambda))) ||
 		 ((fp = fopen(directory, "r")) == NULL) ||
 		 ((sequence = (BitSequence *) calloc(m, sizeof(BitSequence))) == NULL) ) {
-//		fprintf(stats[TEST_NONPERIODIC], "\tNONOVERLAPPING TEMPLATES TESTS ABORTED DUE TO ONE OF THE FOLLOWING : \n");
-//		fprintf(stats[TEST_NONPERIODIC], "\tLambda (%f) not being positive!\n", lambda);
-//		fprintf(stats[TEST_NONPERIODIC], "\tTemplate file <%s> not existing\n", directory);
-//		fprintf(stats[TEST_NONPERIODIC], "\tInsufficient memory for required work space.\n");
 		goto end;
 	}
 	else {
-//		fprintf(stats[TEST_NONPERIODIC], "\t\t  NONPERIODIC TEMPLATES TEST\n");
-//		fprintf(stats[TEST_NONPERIODIC], "-------------------------------------------------------------------------------------\n");
-//		fprintf(stats[TEST_NONPERIODIC], "\t\t  COMPUTATIONAL INFORMATION\n");
-//		fprintf(stats[TEST_NONPERIODIC], "-------------------------------------------------------------------------------------\n");
-//		fprintf(stats[TEST_NONPERIODIC], "\tLAMBDA = %f\tM = %d\tN = %d\tm = %d\tn = %d\n", lambda, M, N, m, n);
-//		fprintf(stats[TEST_NONPERIODIC], "-------------------------------------------------------------------------------------\n");
-//		fprintf(stats[TEST_NONPERIODIC], "\t\tF R E Q U E N C Y\n");
-//		fprintf(stats[TEST_NONPERIODIC], "Template   W_1  W_2  W_3  W_4  W_5  W_6  W_7  W_8    Chi^2   P_value Assignment Index\n");
-//		fprintf(stats[TEST_NONPERIODIC], "-------------------------------------------------------------------------------------\n");
-
 		if ( numOfTemplates[m] < MAXNUMOFTEMPLATES )
 			SKIP = 1;
 		else

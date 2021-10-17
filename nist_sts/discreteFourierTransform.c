@@ -1,9 +1,7 @@
-#include <stdio.h>
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
 #include "include/externs.h"
-#include "include/utilities.h"
 #include "include/cephes.h"
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -21,7 +19,6 @@ DiscreteFourierTransform(int n, BitSequence *epsilon)
 	if ( ((X = (double*) calloc(n,sizeof(double))) == NULL) ||
 		 ((wsave = (double *)calloc(2*n,sizeof(double))) == NULL) ||
 		 ((m = (double*)calloc(n/2+1, sizeof(double))) == NULL) ) {
-//			fprintf(stats[7],"\t\tUnable to allocate working arrays for the DFT.\n");
 			if( X != NULL )
 				free(X);
 			if( wsave != NULL )
@@ -50,19 +47,6 @@ DiscreteFourierTransform(int n, BitSequence *epsilon)
 	N_o = (double) 0.95*n/2.0;
 	d = (N_l - N_o)/sqrt(n/4.0*0.95*0.05);
 	p_value = nist_erfc(fabs(d)/sqrt(2.0));
-
-//	fprintf(stats[TEST_FFT], "\t\t\t\tFFT TEST\n");
-//	fprintf(stats[TEST_FFT], "\t\t-------------------------------------------\n");
-//	fprintf(stats[TEST_FFT], "\t\tCOMPUTATIONAL INFORMATION:\n");
-//	fprintf(stats[TEST_FFT], "\t\t-------------------------------------------\n");
-//	fprintf(stats[TEST_FFT], "\t\t(a) Percentile = %f\n", percentile);
-//	fprintf(stats[TEST_FFT], "\t\t(b) N_l        = %f\n", N_l);
-//	fprintf(stats[TEST_FFT], "\t\t(c) N_o        = %f\n", N_o);
-//	fprintf(stats[TEST_FFT], "\t\t(d) d          = %f\n", d);
-//	fprintf(stats[TEST_FFT], "\t\t-------------------------------------------\n");
-//
-//	fprintf(stats[TEST_FFT], "%s\t\tp_value = %f\n\n", p_value < ALPHA ? "FAILURE" : "SUCCESS", p_value);
-//	fprintf(results[TEST_FFT], "%f\n", p_value);
 
 	free(X);
 	free(wsave);

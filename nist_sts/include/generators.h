@@ -1,17 +1,6 @@
 #ifndef _NIST_GENERATORS_H_
 #define _NIST_GENERATORS_H_
 
-//void	lcg();
-//double	lcg_rand(int, double, double*, int);
-//void	quadRes1();
-//void	quadRes2();
-//void	cubicRes();
-//void	exclusiveOR();
-//void	modExp();
-//void	bbs();
-//void	micali_schnorr();
-//void	SHA1();
-
 
 /* The circular shifts. */
 #define CS1(x) ((((ULONG)x)<<1)|(((ULONG)x)>>31))

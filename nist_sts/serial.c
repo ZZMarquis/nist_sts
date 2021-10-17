@@ -19,25 +19,7 @@ Serial(int m, int n, BitSequence *epsilon)
 	del2 = psim0 - 2.0*psim1 + psim2;
 	p_value1 = cephes_igamc(pow(2, m-1)/2, del1/2.0);
 	p_value2 = cephes_igamc(pow(2, m-2)/2, del2/2.0);
-	
-//	fprintf(stats[TEST_SERIAL], "\t\t\t       SERIAL TEST\n");
-//	fprintf(stats[TEST_SERIAL], "\t\t---------------------------------------------\n");
-//	fprintf(stats[TEST_SERIAL], "\t\t COMPUTATIONAL INFORMATION:		  \n");
-//	fprintf(stats[TEST_SERIAL], "\t\t---------------------------------------------\n");
-//	fprintf(stats[TEST_SERIAL], "\t\t(a) Block length    (m) = %d\n", m);
-//	fprintf(stats[TEST_SERIAL], "\t\t(b) Sequence length (n) = %d\n", n);
-//	fprintf(stats[TEST_SERIAL], "\t\t(c) Psi_m               = %f\n", psim0);
-//	fprintf(stats[TEST_SERIAL], "\t\t(d) Psi_m-1             = %f\n", psim1);
-//	fprintf(stats[TEST_SERIAL], "\t\t(e) Psi_m-2             = %f\n", psim2);
-//	fprintf(stats[TEST_SERIAL], "\t\t(f) Del_1               = %f\n", del1);
-//	fprintf(stats[TEST_SERIAL], "\t\t(g) Del_2               = %f\n", del2);
-//	fprintf(stats[TEST_SERIAL], "\t\t---------------------------------------------\n");
-//
-//	fprintf(stats[TEST_SERIAL], "%s\t\tp_value1 = %f\n", p_value1 < ALPHA ? "FAILURE" : "SUCCESS", p_value1);
-//	fprintf(results[TEST_SERIAL], "%f\n", p_value1);
 
-//	fprintf(stats[TEST_SERIAL], "%s\t\tp_value2 = %f\n\n", p_value2 < ALPHA ? "FAILURE" : "SUCCESS", p_value2); fflush(stats[TEST_SERIAL]);
-//	fprintf(results[TEST_SERIAL], "%f\n", p_value2); fflush(results[TEST_SERIAL]);
 	if (p_value1 < ALPHA || p_value2 < ALPHA) {
         return 0;
 	} else {

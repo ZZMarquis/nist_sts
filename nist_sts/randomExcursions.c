@@ -51,29 +51,12 @@ RandomExcursions(int n, BitSequence *epsilon)
 		J++;
 	cycle[J] = n;
 
-//	fprintf(stats[TEST_RND_EXCURSION], "\t\t\t  RANDOM EXCURSIONS TEST\n");
-//	fprintf(stats[TEST_RND_EXCURSION], "\t\t--------------------------------------------\n");
-//	fprintf(stats[TEST_RND_EXCURSION], "\t\tCOMPUTATIONAL INFORMATION:\n");
-//	fprintf(stats[TEST_RND_EXCURSION], "\t\t--------------------------------------------\n");
-//	fprintf(stats[TEST_RND_EXCURSION], "\t\t(a) Number Of Cycles (J) = %04d\n", J);
-//	fprintf(stats[TEST_RND_EXCURSION], "\t\t(b) Sequence Length (n)  = %d\n", n);
-
 	constraint = MAX(0.005*pow(n, 0.5), 500);
 	if (J < constraint) {
-//		fprintf(stats[TEST_RND_EXCURSION], "\t\t---------------------------------------------\n");
-//		fprintf(stats[TEST_RND_EXCURSION], "\t\tWARNING:  TEST NOT APPLICABLE.  THERE ARE AN\n");
-//		fprintf(stats[TEST_RND_EXCURSION], "\t\t\t  INSUFFICIENT NUMBER OF CYCLES.\n");
-//		fprintf(stats[TEST_RND_EXCURSION], "\t\t---------------------------------------------\n");
-//		for(i = 0; i < 8; i++) {
-//            fprintf(results[TEST_RND_EXCURSION], "%f\n", 0.0);
-//        }
         ret = 1; //TODO
         goto end;
 	}
 	else {
-//		fprintf(stats[TEST_RND_EXCURSION], "\t\t(c) Rejection Constraint = %f\n", constraint);
-//		fprintf(stats[TEST_RND_EXCURSION], "\t\t-------------------------------------------\n");
-
 		cycleStart = 0;
 		cycleStop  = cycle[1];
 		for ( k=0; k<6; k++ )

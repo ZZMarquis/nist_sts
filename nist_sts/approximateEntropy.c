@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "include/externs.h"
-#include "include/utilities.h"
 #include "include/cephes.h"
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -16,12 +15,6 @@ ApproximateEntropy(int m, int n, BitSequence *epsilon)
 	int				i, j, k, r, blockSize, seqLength, powLen, index;
 	double			sum, numOfBlocks, ApEn[2], apen, chi_squared, p_value;
 	unsigned int	*P;
-	
-//	fprintf(stats[TEST_APEN], "\t\t\tAPPROXIMATE ENTROPY TEST\n");
-//	fprintf(stats[TEST_APEN], "\t\t--------------------------------------------\n");
-//	fprintf(stats[TEST_APEN], "\t\tCOMPUTATIONAL INFORMATION:\n");
-//	fprintf(stats[TEST_APEN], "\t\t--------------------------------------------\n");
-//	fprintf(stats[TEST_APEN], "\t\t(a) m (block length)    = %d\n", m);
 
 	seqLength = n;
 	r = 0;
@@ -35,7 +28,6 @@ ApproximateEntropy(int m, int n, BitSequence *epsilon)
 			numOfBlocks = (double)seqLength;
 			powLen = (int)pow(2, blockSize+1)-1;
 			if ( (P = (unsigned int*)calloc(powLen,sizeof(unsigned int)))== NULL ) {
-//				fprintf(stats[TEST_APEN], "ApEn:  Insufficient memory available.\n");
 				return 0;
 			}
 			for ( i=1; i<powLen-1; i++ )
@@ -67,25 +59,11 @@ ApproximateEntropy(int m, int n, BitSequence *epsilon)
 	
 	chi_squared = 2.0*seqLength*(log(2) - apen);
 	p_value = cephes_igamc(pow(2, m-1), chi_squared/2.0);
-	
-//	fprintf(stats[TEST_APEN], "\t\t(b) n (sequence length) = %d\n", seqLength);
-//	fprintf(stats[TEST_APEN], "\t\t(c) Chi^2               = %f\n", chi_squared);
-//	fprintf(stats[TEST_APEN], "\t\t(d) Phi(m)	       = %f\n", ApEn[0]);
-//	fprintf(stats[TEST_APEN], "\t\t(e) Phi(m+1)	       = %f\n", ApEn[1]);
-//	fprintf(stats[TEST_APEN], "\t\t(f) ApEn                = %f\n", apen);
-//	fprintf(stats[TEST_APEN], "\t\t(g) Log(2)              = %f\n", log(2.0));
-//	fprintf(stats[TEST_APEN], "\t\t--------------------------------------------\n");
 
 	if ( m > (int)(log(seqLength)/log(2)-5) ) {
-//		fprintf(stats[TEST_APEN], "\t\tNote: The blockSize = %d exceeds recommended value of %d\n", m,
-//			MAX(1, (int)(log(seqLength)/log(2)-5)));
-//		fprintf(stats[TEST_APEN], "\t\tResults are inaccurate!\n");
-//		fprintf(stats[TEST_APEN], "\t\t--------------------------------------------\n");
         return 0;
 	}
-	
-//	fprintf(stats[TEST_APEN], "%s\t\tp_value = %f\n\n", p_value < ALPHA ? "FAILURE" : "SUCCESS", p_value); fflush(stats[TEST_APEN]);
-//	fprintf(results[TEST_APEN], "%f\n", p_value); fflush(results[TEST_APEN]);
+
     if (p_value < ALPHA) {
         return 0;
     } else {

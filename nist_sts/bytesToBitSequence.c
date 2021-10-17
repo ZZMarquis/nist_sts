@@ -27,4 +27,5 @@ int BytesToBitSequence(unsigned char *in, int inl, BitSequence *outbuf, int bufs
         outbuf[j + 6] = (BitSequence) (_compute(in[i], 0x02));
         outbuf[j + 7] = (BitSequence) (_compute(in[i], 0x01));
     }
+    return 1;
 }
